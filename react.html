@@ -8,41 +8,45 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script type="text/babel">
         const root = document.getElementById("root");
-        let counter = 0;
 
-        function countUp() {
-            counter = counter + 1;
-            render();
-        }
-        
         function render() {
             ReactDOM.render(<Container />, root);
         }
 
-        const Title = () => (
-            <h3 id="title" onMouseEnter={()=>console.log("mouse enter")}>
-                Total clicks: {counter}
-            </h3>
-        );
+        function Title(props){
+            return (
+                <h3 id="title" onMouseEnter={()=>console.log("mouse enter")}>
+                    Total clicks: {props.counter}
+                </h3>
+            );
+        }
 
-        const Button = () => ( 
-            <button 
-                style={{ 
-                    backgroundColor: "tomato",
-                    color: "black",
-                }}
-                onClick={countUp}
-            >
-                Click me
-            </button>
-        );
+        function Button(props){
+            return (
+                <button 
+                    style={{ 
+                        backgroundColor: "tomato",
+                        color: "black",
+                    }}
+                    onClick={props.onclick}
+                >
+                    Click me
+                </button>
+            );
+        }
         
-        const Container = () => ( 
-        <div>
-            <Title />
-            <Button />
-        </div>
-        );
+        function Container(){
+            const [counter, setCounter] = React.useState(0);
+            function countUp() {
+                setCounter((item) => item + 1);
+            }
+            return (
+                <div>
+                    <Title counter={counter}/>
+                    <Button onclick={countUp}/>
+                </div>
+            );
+        }
 
         render();
     </script>
