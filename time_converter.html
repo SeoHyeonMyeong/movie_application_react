@@ -9,36 +9,45 @@
     <script type="text/babel">
         
         function App(){
-            const [minutes, setMinutes] = React.useState(0)
+            const [amount, setAmount] = React.useState(0)
+            const [flipped, setFlipped] = React.useState(false)
             function onChange(event){
-                setMinutes(event.target.value);
+                setAmount(event.target.value);
             }
-            function reset(){ setMinutes(0) }
+            function reset(){ setAmount(0) }
+            function onFlip(event){
+                if(flipped){ setAmount((item) => item * 60) }
+                else{ setAmount((item) => Math.round(item / 60)) }
+                setFlipped((item)=> !item);
+            }
             return (
                 <div>
                     <h1>Super Converter</h1>
                     <div>
                         <label htmlFor="minutes">Minutes</label>
                         <input 
-                            value={minutes} 
-                            id="minute" 
+                            value={flipped ? amount * 60 : amount} 
+                            id="minutes" 
                             placeholder="Minutes" 
                             type="number"
                             onChange={onChange}
+                            disabled={flipped}
                         />
                     </div>
                     <div>
-                        <h4>{minutes}분을 변경하면...</h4>
+                        <h4>변경...</h4>
                         <label htmlFor="hours">Hours</label>
                         <input 
-                            value={Math.round(minutes / 60)} 
+                            value={flipped ? amount : Math.round(amount / 60)} 
                             id="hours" 
                             placeholder="Hours" 
                             type="number"
-                            disabled
+                            onChange={onChange}
+                            disabled={!flipped}
                         />
                     </div>
                     <button onClick={reset}>리셋!</button>
+                    <button onClick={onFlip}>교체</button>
                 </div>
             );
         }
