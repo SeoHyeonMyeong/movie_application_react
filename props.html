@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <div id="root"></div>
+    </body>
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+        function Btn(props){
+            return (
+                <button 
+                    style={{
+                        backgroundColor: "tomato",
+                        color:"white",
+                        padding:"10px 20px",
+                        margin:"10px",
+                        borderRadius: 10,
+                        border: 1,
+                    }}
+                >
+                {props.content}
+                </button>
+            )
+        }
+        function App(){
+            return (
+                <div>
+                    <Btn content="Save Changes" />
+                    <Btn content="Continue" />
+                </div>
+            )
+        }
+        const root = document.getElementById("root");
+        ReactDOM.render(<App />, root);
+    </script>
+</html>
