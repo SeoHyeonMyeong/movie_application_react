@@ -10,6 +10,7 @@
         function Btn(props){
             return (
                 <button 
+                    onClick = {props.onClick}
                     style={{
                         backgroundColor: "tomato",
                         color:"white",
@@ -23,10 +24,13 @@
                 </button>
             )
         }
+        const MemorizedBtn = React.memo(Btn);
         function App(){
+            const [value, setValue] = React.useState("First Value")
+            const changeValue = () => setValue("Second Value");
             return (
                 <div>
-                    <Btn content="Save Changes" />
+                    <Btn content={value} onClick={changeValue} />
                     <Btn content="Continue" />
                 </div>
             )
