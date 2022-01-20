@@ -2,9 +2,23 @@ import Button from "./Button";
 import styles from "./App.module.css";
 import { useState, useEffect } from "react";
 
+function Hello() {
+  function byFn() {
+    console.log("Hello 컴포넌트 삭제")
+  }
+  function hiFn() {
+    console.log("Hello 컴포넌트 생성");
+    return byFn;
+  }
+  useEffect(hiFn, []);
+  return <h1>Hello</h1>;
+}
+
 function App() {
   const [counter, setValue] = useState(0);
   const [keyword, setKeyword] = useState("");
+  const [showing, setShowing] = useState("");
+  const onClickShow = () => setShowing((prev) => !prev);
   const onClick = () => setValue((prev) => prev + 1);
   const onChange = (event) => setKeyword(event.target.value);
 
@@ -33,6 +47,9 @@ function App() {
       />
       <h1 className={styles.title}>{counter}</h1>
       <Button text={"First Button"} onClick={onClick}/>
+      <br/>
+      {showing ? <Hello /> : null}
+      <Button text={showing ? "숨김" : "보이기"} onClick={onClickShow}/>
     </div>
   );
 }
