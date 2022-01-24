@@ -25,6 +25,12 @@ function Todo() {
                 />
                 <button>할일 추가</button>
             </form>
+            <hr />
+            <ul>
+                { toDoList.map((item, index) => (
+                <li key={index}>{item}</li>
+                )) }
+            </ul>
         </div>
     )
 }
