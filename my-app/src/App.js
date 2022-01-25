@@ -1,6 +1,7 @@
 import Button from "./Button";
 import styles from "./App.module.css";
 import Todo from "./Todo";
+import CoinTracker from "./CoinTracker";
 import { useState, useEffect } from "react";
 
 function Hello() {
@@ -48,11 +49,13 @@ function App() {
       />
       <h1 className={styles.title}>{counter}</h1>
       <Button text={"First Button"} onClick={onClick}/>
-      <br/>
+      <hr/>
       {showing ? <Hello /> : null}
       <Button text={showing ? "숨김" : "보이기"} onClick={onClickShow}/>
-      <br/>
+      <hr/>
       <Todo/>
+      <hr/>
+      <CoinTracker />
     </div>
   );
 }
