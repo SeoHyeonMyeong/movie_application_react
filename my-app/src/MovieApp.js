@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
+import MovieCard from "./MovieCard";
 
-function Movie() {
+function MovieApp() {
     const [loading, setLodaing] = useState(true);
     const [movies, setMovies] = useState([]);
     const getMovies = async() => {
@@ -33,14 +34,13 @@ function Movie() {
             ) : ( 
                 <div>
                     {movies.map((movie) => (
-                    <div key={movie.id}>
-                        <img alt="cover_image" src={movie.medium_cover_image}/>
-                        <h2>{movie.title}</h2>
-                        <ul>
-                            {movie.genres.map(genre => <li key={genre}>{genre}</li>)}
-                        </ul>
-                        <p>{movie.summary}</p>
-                    </div>
+                        <MovieCard 
+                            key={movie.id}
+                            coverImage={movie.medium_cover_image}
+                            title={movie.title}
+                            summary={movie.summary}
+                            genres={movie.genres}
+                        />
                     ))}
                 </div>
             )}
@@ -48,4 +48,4 @@ function Movie() {
     )
 }
 
-export default Movie;
+export default MovieApp;

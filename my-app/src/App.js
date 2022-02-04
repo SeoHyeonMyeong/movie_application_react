@@ -2,7 +2,7 @@ import Button from "./Button";
 import styles from "./App.module.css";
 import Todo from "./Todo";
 import CoinTracker from "./CoinTracker";
-import Movie from "./Movie";
+import MovieApp from "./MovieApp";
 import { useState, useEffect } from "react";
 
 function Hello() {
@@ -58,7 +58,7 @@ function App() {
       <hr/>
       <CoinTracker />
       <hr/>
-      <Movie/>
+      <MovieApp/>
     </div>
   );
 }
