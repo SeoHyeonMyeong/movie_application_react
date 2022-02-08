@@ -36,6 +36,7 @@ function MovieApp() {
                     {movies.map((movie) => (
                         <MovieCard 
                             key={movie.id}
+                            id={movie.id}
                             coverImage={movie.medium_cover_image}
                             title={movie.title}
                             summary={movie.summary}
