@@ -6,7 +6,7 @@ function MovieCard({ id, coverImage, title, genres, summary }) {
         <div >
             <img alt={title} src={coverImage}/>
             <h2>
-                <Link to={`/movie/${id}`}>{title}</Link>
+                <Link to={process.env.PUBLIC_URL + `/movie/${id}`}>{title}</Link>
             </h2>
             <ul>
                 {genres.map(genre => <li key={genre}>{genre}</li>)}
